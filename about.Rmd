@@ -1,0 +1,9 @@
+---
+title: "TidyTuesday visualisations"
+description: |
+  This blog contains examples of the visualisations I have created using TidyTuesday datasets done as part of the fortnightly Code Club. More information on the TidyTuesday initative can be found on Thomas Mock's Github page https://github.com/rfordatascience/tidytuesday
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```

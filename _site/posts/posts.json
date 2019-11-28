@@ -1,0 +1,81 @@
+[
+  {
+    "path": "posts/2019-10-18-powerlifting/",
+    "title": "Powerlifting",
+    "description": "This week I thought I would explore the use of gganimate package to animate a ggplot graph. Connor Rothschild's, a undergraduate at Rice University, has created an excellent 2019 week 41 TidyTuesday submission, producing an animated line graph showing the differences between men and women's heaviest lifts. This used both the ggplot2 and gganimate package so I thought I would work through his code to start to understand how to apply animation to a ggplot.",
+    "author": [
+      {
+        "name": "Graham French",
+        "url": {}
+      }
+    ],
+    "date": "2019-10-18",
+    "categories": [
+      "ggplot2",
+      "ggdark",
+      "gganimate"
+    ],
+    "preview": "posts/2019-10-18-powerlifting/animation.gif",
+    "last_modified": "2019-11-28T15:55:34+00:00"
+  },
+  {
+    "path": "posts/2019-08-23-nuclear-explosions/",
+    "title": "Nuclear Explosions",
+    "description": "Nuclear Explosions dataset provided for 2019 week 34 dataset allowed me to explore creating a word cloud of atomic explosions carried out between 1945-1998, masked with the shape of a mushroom cloud for additional effect!",
+    "author": [
+      {
+        "name": "Graham French",
+        "url": {}
+      }
+    ],
+    "date": "2019-08-23",
+    "categories": [
+      "ggplot2",
+      "ggwordcloud",
+      "ggdark",
+      "magick"
+    ],
+    "preview": "posts/2019-08-23-nuclear-explosions/nuclear-explosions_files/figure-html5/unnamed-chunk-5-1.png",
+    "last_modified": "2019-11-28T15:54:32+00:00"
+  },
+  {
+    "path": "posts/2019-07-25-nobel-prize-winners/",
+    "title": "Nobel Prize Winners",
+    "description": "Using week 2019-20 TidyTuesday Nobel Prize Winners dataset this week I took the opportunity to   explore ggridge plots, plotting age of nobel prize winners for each of the six Nobel Prize Winner categories Economics, Literature, Peace, Medicine, Chemistry and Physics.\nI also had a look at themes in ggplot2 provided by additional packages ggthemes, ggdark and hrbrthemes, which have been retained but commented out in the code.",
+    "author": [
+      {
+        "name": "Graham French",
+        "url": {}
+      }
+    ],
+    "date": "2019-07-25",
+    "categories": [
+      "ggplot2",
+      "ggridges",
+      "ggthemes",
+      "ggdark",
+      "hrbrthemes"
+    ],
+    "preview": "posts/2019-07-25-nobel-prize-winners/nobel-prize-winners_files/figure-html5/unnamed-chunk-6-1.png",
+    "last_modified": "2019-11-28T15:52:27+00:00"
+  },
+  {
+    "path": "posts/2019-07-04-ufo-sightings/",
+    "title": "Global UFO sightings",
+    "description": "This script uses week 2019-26 TidyTuesday dataset on UFO sightings around the world, extracting the UK sightings to create a heatmap of the number of UFO sightings in the UK for each day of the week. \nI was also going to produce a static map to plot the UFO sightings, finding a useful UK basemap from the rnaturalearth package but in the end didn't get round to finishing it. The code with the UK base map is there in case it is useful in the future!",
+    "author": [
+      {
+        "name": "Graham French",
+        "url": {}
+      }
+    ],
+    "date": "2019-07-04",
+    "categories": [
+      "pheatmap",
+      "tmap",
+      "rnaturalearth"
+    ],
+    "preview": "posts/2019-07-04-ufo-sightings/ufo-sightings_files/figure-html5/unnamed-chunk-7-1.png",
+    "last_modified": "2019-11-28T15:46:47+00:00"
+  }
+]

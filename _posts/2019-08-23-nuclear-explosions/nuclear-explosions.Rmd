@@ -1,0 +1,78 @@
+---
+title: "Nuclear Explosions"
+categories:
+  - ggplot2
+  - ggwordcloud
+  - ggdark
+  - magick
+description: |
+  Nuclear Explosions dataset provided for 2019 week 34 dataset allowed me to explore creating a word cloud of atomic explosions carried out between 1945-1998, masked with the shape of a mushroom cloud for additional effect!
+author:
+  - name: Graham French
+date: 08-23-2019
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(ggwordcloud)
+library(ggdark)
+library(magick)
+```
+
+Download the table on nuclear explosions, converting the countries to an ordered factor in case we wish to colour the word cloud by country later on 
+
+```{r}
+country_levels <- c("USA", "USSR", "FRANCE", "CHINA", "UK", "INDIA", "PAKIST")
+nuclear_explosions_orig <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-08-20/nuclear_explosions.csv") %>% 
+  mutate(country = factor(country, levels = country_levels, ordered = TRUE ))
+```
+
+To create the words to be displayed on the word cloud combine the country carrying out the explosion with the year that explosion occurred. As we want explosions resulting in larger yield to have bigger words keep the yield_upper column.
+
+```{r}
+nuclear_explosions <- nuclear_explosions_orig %>% 
+  unite(country_year, country, year, sep = "", remove = FALSE) %>%
+  select(country_year, country, yield_upper)
+```
+
+To make the shape of an atomic explosion a mask needs to be applied to the wordcloud. This is a png file with the explosion black silouhette on a white background. The image I used first needed to be  converted to black and white using the magick package 
+
+```{r}
+mask_png <- image_read("D:/code_club/tidytuesday/2019-34 nuclear explosions/nuclear_explosion_mask.png") %>% 
+  image_threshold(type = "white", threshold = "50%") %>%
+  image_threshold(type = "black", threshold = "50%")
+```
+
+To create the word cloud I used the ggwordcloud package which is an extension of ggplot2, providing an additional geom. After a bit of fiddling I settled on the parameters below in the ggplot2 plot. Note the rm_outside parameter removed words that can not be fitted into the word cloud (they otherwise are all plotted as overlapping words in the centre of the word cloud)
+
+I also drew the cloud on a black background using the dark theme from the ggdark package of the ggplot2 themes 
+
+I am used the tictoc package to keep an eye on the time it takes to produce a word cloud, which for this word cloud with around 2000 words is about 40 seconds
+
+```{r}
+tictoc::tic()
+wordcloud <- ggplot(nuclear_explosions, 
+                    aes(label = country_year, 
+                        size = yield_upper)) +
+  geom_text_wordcloud(mask = mask_png,
+                      rm_outside = TRUE,
+                      color = "white") +
+  dark_theme_minimal()
+wordcloud
+```
+
+Now lets save our wordcloud as a png file.
+
+```{r}
+ggsave(wordcloud,
+       filename = "nuclear_explosions_wordcloud.png",
+       width = 10)
+tictoc::toc()
+```
